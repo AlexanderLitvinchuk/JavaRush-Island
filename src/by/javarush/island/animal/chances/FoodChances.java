@@ -41,7 +41,7 @@ public class FoodChances {
         wolfVeganMap.put(VegetarianEnum.COW, 30);
         wolfVeganMap.put(VegetarianEnum.DUCK, 80);
         wolfVeganMap.put(VegetarianEnum.CATERPILLAR, 0);
-        vegetarianChances.put(PredatorEnum.FOX, wolfVeganMap);
+        vegetarianChances.put(PredatorEnum.WOLF, wolfVeganMap);
         // Змея
         Map<PredatorEnum, Integer> snakeMap = new HashMap<>();
         snakeMap.put(PredatorEnum.WOLF, 0);
@@ -49,7 +49,7 @@ public class FoodChances {
         snakeMap.put(PredatorEnum.FOX, 0);
         snakeMap.put(PredatorEnum.BEAR, 0);
         snakeMap.put(PredatorEnum.EAGLE, 0);
-        predatorChances.put(PredatorEnum.WOLF, snakeMap);
+        predatorChances.put(PredatorEnum.SNAKE, snakeMap);
         Map<VegetarianEnum, Integer> snakeVeganMap = new HashMap<>();
         snakeVeganMap.put(VegetarianEnum.HORSE, 0);
         snakeVeganMap.put(VegetarianEnum.DEER, 0);
@@ -61,7 +61,7 @@ public class FoodChances {
         snakeVeganMap.put(VegetarianEnum.COW, 0);
         snakeVeganMap.put(VegetarianEnum.DUCK, 50);
         snakeVeganMap.put(VegetarianEnum.CATERPILLAR, 90);
-        vegetarianChances.put(PredatorEnum.FOX, snakeVeganMap);
+        vegetarianChances.put(PredatorEnum.SNAKE, snakeVeganMap);
         // Лиса
         Map<PredatorEnum, Integer> foxMap = new HashMap<>();
         foxMap.put(PredatorEnum.WOLF, 0);
@@ -82,7 +82,46 @@ public class FoodChances {
         foxVeganMap.put(VegetarianEnum.DUCK, 80);
         foxVeganMap.put(VegetarianEnum.CATERPILLAR, 0);
         vegetarianChances.put(PredatorEnum.FOX, foxVeganMap);
-
+        // Медведь
+        Map<PredatorEnum, Integer> bearMap = new HashMap<>();
+        bearMap.put(PredatorEnum.WOLF, 20);
+        bearMap.put(PredatorEnum.SNAKE, 30);
+        bearMap.put(PredatorEnum.FOX, 20);
+        bearMap.put(PredatorEnum.BEAR, 0);
+        bearMap.put(PredatorEnum.EAGLE, 30);
+        predatorChances.put(PredatorEnum.BEAR, bearMap);
+        Map<VegetarianEnum, Integer> bearVeganMap = new HashMap<>();
+        bearVeganMap.put(VegetarianEnum.HORSE, 70);
+        bearVeganMap.put(VegetarianEnum.DEER, 80);
+        bearVeganMap.put(VegetarianEnum.HARE, 80);
+        bearVeganMap.put(VegetarianEnum.HAMSTER, 90);
+        bearVeganMap.put(VegetarianEnum.GOAT, 70);
+        bearVeganMap.put(VegetarianEnum.SHEEP, 70);
+        bearVeganMap.put(VegetarianEnum.KANGAROO, 60);
+        bearVeganMap.put(VegetarianEnum.COW, 75);
+        bearVeganMap.put(VegetarianEnum.DUCK, 80);
+        bearVeganMap.put(VegetarianEnum.CATERPILLAR, 0);
+        vegetarianChances.put(PredatorEnum.BEAR, bearVeganMap);
+        // Орел
+        Map<PredatorEnum, Integer> eagleMap = new HashMap<>();
+        eagleMap.put(PredatorEnum.WOLF, 0);
+        eagleMap.put(PredatorEnum.SNAKE, 50);
+        eagleMap.put(PredatorEnum.FOX, 0);
+        eagleMap.put(PredatorEnum.BEAR, 0);
+        eagleMap.put(PredatorEnum.EAGLE, 0);
+        predatorChances.put(PredatorEnum.EAGLE, eagleMap);
+        Map<VegetarianEnum, Integer> eagleVeganMap = new HashMap<>();
+        eagleVeganMap.put(VegetarianEnum.HORSE, 0);
+        eagleVeganMap.put(VegetarianEnum.DEER, 0);
+        eagleVeganMap.put(VegetarianEnum.HARE, 90);
+        eagleVeganMap.put(VegetarianEnum.HAMSTER, 90);
+        eagleVeganMap.put(VegetarianEnum.GOAT, 0);
+        eagleVeganMap.put(VegetarianEnum.SHEEP, 0);
+        eagleVeganMap.put(VegetarianEnum.KANGAROO, 0);
+        eagleVeganMap.put(VegetarianEnum.COW, 0);
+        eagleVeganMap.put(VegetarianEnum.DUCK, 85);
+        eagleVeganMap.put(VegetarianEnum.CATERPILLAR, 20);
+        vegetarianChances.put(PredatorEnum.EAGLE, eagleVeganMap);
     }
 
     private void initVegetarianChances() {
