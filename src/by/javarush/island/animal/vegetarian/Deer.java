@@ -1,10 +1,11 @@
 package by.javarush.island.animal.vegetarian;
 
-import by.javarush.island.animal.VegetarianEnum;
+import by.javarush.island.animal.AnimalEnum;
+
 
 public class Deer extends Vegetarian {
     @Override
-    public VegetarianEnum getVegetarianType() {
-        return VegetarianEnum.DEER;
+    public AnimalEnum getAnimal() {
+        return AnimalEnum.DEER;
     }
 }
