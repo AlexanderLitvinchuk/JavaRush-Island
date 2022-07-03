@@ -1,10 +1,10 @@
 package by.javarush.island.animal.predator;
 
-import by.javarush.island.animal.PredatorEnum;
+import by.javarush.island.animal.AnimalEnum;
 
 public class Snake extends Predator {
     @Override
-    public PredatorEnum getPredatorType() {
-        return PredatorEnum.SNAKE;
+    public AnimalEnum getAnimal() {
+        return AnimalEnum.SNAKE;
     }
 }

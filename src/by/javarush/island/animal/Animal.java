@@ -15,9 +15,11 @@ public abstract class Animal {
     public abstract void multiply();
 
     /**
-     *
+     * направление движения
      */
     public abstract DirectionsDrivingEnum chooseDirectionOfTravel();
 
     public abstract AnimalTypeEnum getAnimalType();
+
+    public abstract AnimalEnum getAnimal();
 }

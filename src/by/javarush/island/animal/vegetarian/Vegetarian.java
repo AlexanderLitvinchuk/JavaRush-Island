@@ -12,8 +12,6 @@ public abstract class Vegetarian extends Animal {
         return AnimalTypeEnum.VEGETARIAN;
     }
 
-    abstract public VegetarianEnum getVegetarianType();
-
     public boolean isNotVegan() {
         return false;
     }
