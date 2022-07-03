@@ -1,6 +1,6 @@
 package by.javarush.island.animal;
 
-public enum AnimalEnum {
+public enum AnimalTypeEnum {
 
     PREDATOR("Хищник"),
     VEGETARIAN("Травоядные");
@@ -10,7 +10,7 @@ public enum AnimalEnum {
      */
     private final String description;
 
-    AnimalEnum(String description) {
+    AnimalTypeEnum(String description) {
         this.description = description;
     }
 

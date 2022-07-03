@@ -19,5 +19,5 @@ public abstract class Animal {
      */
     public abstract DirectionsDrivingEnum chooseDirectionOfTravel();
 
-    public abstract AnimalEnum getAnimalType();
+    public abstract AnimalTypeEnum getAnimalType();
 }
