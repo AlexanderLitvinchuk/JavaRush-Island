@@ -1,6 +1,9 @@
 package by.javarush.island.animal;
 
+import by.javarush.island.animal.characteristic.Characteristic;
+import by.javarush.island.animal.characteristic.CharacteristicDto;
 import by.javarush.island.animal.directions.DirectionsDrivingEnum;
+import by.javarush.island.cell.Cell;
 
 public abstract class Animal {
 
@@ -9,10 +12,16 @@ public abstract class Animal {
      */
     private int amountOfHunger = 0;
 
+    private boolean isLive = true;
+
+    protected CharacteristicDto getCharacteristic()  {
+        return Characteristic.getCharacteristicDto(getAnimal());
+    }
+
     /**
      * Покушать
      */
-    public abstract void eat();
+    public abstract void eat(Cell cell);
 
     /**
      * Размножение
@@ -32,7 +41,21 @@ public abstract class Animal {
         return amountOfHunger;
     }
 
+    /**
+     * Добавить к счётчику голода +1 ход голода
+     */
     public void addOneTackHunger() {
         amountOfHunger++;
+    }
+
+    /**
+     * Сбросить счётчик голода
+     */
+    public void resetHungerCounter() {
+        this.amountOfHunger = 0;
+    }
+
+    public boolean isLive() {
+        return isLive;
     }
 }
