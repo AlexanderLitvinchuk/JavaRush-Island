@@ -5,6 +5,11 @@ import by.javarush.island.animal.directions.DirectionsDrivingEnum;
 public abstract class Animal {
 
     /**
+     * Количество голода
+     */
+    private int amountOfHunger = 0;
+
+    /**
      * Покушать
      */
     public abstract void eat();
@@ -22,4 +27,12 @@ public abstract class Animal {
     public abstract AnimalTypeEnum getAnimalType();
 
     public abstract AnimalEnum getAnimal();
+
+    public int getAmountOfHunger() {
+        return amountOfHunger;
+    }
+
+    public void addOneTackHunger() {
+        amountOfHunger++;
+    }
 }
