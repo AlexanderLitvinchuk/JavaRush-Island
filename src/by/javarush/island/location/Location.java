@@ -16,9 +16,9 @@ public class Location {
 
     private final Cell[][] island = new Cell[HEIGHT][WIDTH];
 
-    public Location(Characteristic characteristic) {
+    public Location() {
         init();
-        initAnimalAndPlant(characteristic);
+        initAnimalAndPlant();
     }
 
     /**
@@ -34,19 +34,19 @@ public class Location {
         System.out.println("Инициализация поля island завершена");
     }
 
-    private void initAnimalAndPlant(Characteristic characteristic) {
+    private void initAnimalAndPlant() {
         for (Cell[] cells : island) {
             for (Cell cell : cells) {
-                initAnimal(cell, characteristic);
+                initAnimal(cell);
                 int amountPlantsInCell = (int) (Math.random() * 10000);
                 cell.getPlants().setAmount(amountPlantsInCell);
             }
         }
     }
 
-    private void initAnimal(Cell cell, Characteristic characteristic) {
+    private void initAnimal(Cell cell) {
         for (AnimalEnum value : AnimalEnum.values()) {
-            CharacteristicDto characteristicDto = characteristic.getCharacteristicDto(value);
+            CharacteristicDto characteristicDto = Characteristic.getCharacteristicDto(value);
             int amountAnimalInCell = (int) (Math.random() * characteristicDto.getMaximumAmount());
             for (int i = 0; i < amountAnimalInCell; i++) {
                 cell.getAnimals().add(AnimalFactory.getAnimal(value));

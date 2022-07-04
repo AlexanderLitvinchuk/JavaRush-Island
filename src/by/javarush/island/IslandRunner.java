@@ -16,13 +16,12 @@ public class IslandRunner {
     public static void main(String[] args) {
 
         FoodChances foodChances = new FoodChances();
-        Characteristic characteristic = new Characteristic();
         // Создаём остров
-        Location location = new Location(characteristic);
+        Location location = new Location();
         // печатаем остров
         LocationPrint.print(location.getIsland());
 
-        // Наверное, тут нужно переделать
+        // Наверное, тут нужно переделать на обычный forEach
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         for (int i = 0; i < STEP_COUNT; i++) {
             executorService.submit(new LocationTask(location));
