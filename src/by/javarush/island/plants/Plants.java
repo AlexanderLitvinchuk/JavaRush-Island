@@ -17,4 +17,8 @@ public class Plants {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public void reduceAmount(int i) {
+        amount = amount - i;
+    }
 }
