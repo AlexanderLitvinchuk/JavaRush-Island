@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class FoodChances {
 
-    private final Map<AnimalEnum, Map<AnimalEnum, Integer>> animalEnumMapMap = new HashMap<>();
+    private static final Map<AnimalEnum, Map<AnimalEnum, Integer>> animalEnumMapMap = new HashMap<>();
 
-    public Map<AnimalEnum, Map<AnimalEnum, Integer>> getAnimalEnumMapMap() {
+    public static Map<AnimalEnum, Map<AnimalEnum, Integer>> getAnimalEnumMapMap() {
         return animalEnumMapMap;
     }
 
-    public FoodChances() {
+    static {
         init();
         initVegetarianChances();
     }
@@ -21,7 +21,7 @@ public class FoodChances {
     /**
      * Инициализация animalChances для последующей работы
      */
-    private void init() {
+    private static void init() {
         // Волк
         Map<AnimalEnum, Integer> wolfMap = new HashMap<>();
         wolfMap.put(AnimalEnum.WOLF, 0);
@@ -114,7 +114,7 @@ public class FoodChances {
         animalEnumMapMap.put(AnimalEnum.EAGLE, eagleMap);
     }
 
-    private void initVegetarianChances() {
+    private static void initVegetarianChances() {
         Map<AnimalEnum, Integer> duckMap = new HashMap<>();
         duckMap.put(AnimalEnum.CATERPILLAR, 50);
         animalEnumMapMap.put(AnimalEnum.DUCK, duckMap);

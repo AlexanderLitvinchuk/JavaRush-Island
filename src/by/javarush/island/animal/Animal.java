@@ -1,9 +1,12 @@
 package by.javarush.island.animal;
 
+import by.javarush.island.animal.chances.FoodChances;
 import by.javarush.island.animal.characteristic.Characteristic;
 import by.javarush.island.animal.characteristic.CharacteristicDto;
 import by.javarush.island.animal.directions.DirectionsDrivingEnum;
 import by.javarush.island.cell.Cell;
+
+import java.util.Map;
 
 public abstract class Animal {
 
@@ -16,6 +19,9 @@ public abstract class Animal {
 
     protected CharacteristicDto getCharacteristic()  {
         return Characteristic.getCharacteristicDto(getAnimal());
+    }
+    protected Map<AnimalEnum, Integer> getFoodChances() {
+        return FoodChances.getAnimalEnumMapMap().get(getAnimal());
     }
 
     /**
@@ -57,5 +63,9 @@ public abstract class Animal {
 
     public boolean isLive() {
         return isLive;
+    }
+
+    public void killAnimal() {
+        isLive = false;
     }
 }
