@@ -21,9 +21,10 @@ public class IslandRunner {
         LocationPrint.print(location.getIsland());
 
         // Наверное, тут нужно переделать на обычный forEach
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+//        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         for (int i = 0; i < STEP_COUNT; i++) {
-            executorService.submit(new LocationTask(location));
+//            executorService.submit(new LocationTask(location));
+            new LocationTask(location).run();
         }
 
         System.out.println("Test");
