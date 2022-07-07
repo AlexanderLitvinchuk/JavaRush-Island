@@ -25,6 +25,11 @@ public class CellTask implements Runnable {
         cell.getPlants().plantsGrewByFivePercent();
         // каждое животное кушает
         cell.getAnimals().forEach(animal -> animal.eat(cell));
+        // животные, которые голодные уже N ходов умирают
+        cell.getAnimals().forEach(animal -> {
+            if (animal.getAmountOfHunger() > animal.getCharacteristic().getCountLife())
+                animal.killAnimal();
+        });
         //  Поиск животные которые не живые
         List<Animal> notLiveAnimalList = cell.getAnimals().stream()
                 .filter(animal -> !animal.isLive())
