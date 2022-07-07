@@ -17,7 +17,12 @@ public abstract class Animal {
 
     private boolean isLive = true;
 
-    protected CharacteristicDto getCharacteristic() {
+    /**
+     * Признак, готово животное к движению - true - еще не ходило, false - уже походило
+     */
+    private boolean isReadyToMove = true;
+
+    public CharacteristicDto getCharacteristic() {
         return Characteristic.getCharacteristicDto(getAnimal());
     }
 
@@ -79,5 +84,13 @@ public abstract class Animal {
 
     public void killAnimal() {
         isLive = false;
+    }
+
+    public boolean isReadyToMove() {
+        return isReadyToMove;
+    }
+
+    public void setReadyToMove(boolean readyToMove) {
+        isReadyToMove = readyToMove;
     }
 }

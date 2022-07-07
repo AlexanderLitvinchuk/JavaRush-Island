@@ -1,7 +1,6 @@
 package by.javarush.island;
 
 import by.javarush.island.animal.chances.FoodChances;
-import by.javarush.island.animal.characteristic.Characteristic;
 import by.javarush.island.animal.task.LocationTask;
 import by.javarush.island.location.Location;
 import by.javarush.island.location.LocationPrint;
