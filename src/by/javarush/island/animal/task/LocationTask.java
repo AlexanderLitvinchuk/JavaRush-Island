@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
@@ -30,11 +31,18 @@ public class LocationTask implements Runnable {
 
         // Обработка клеток - каждая в своём потоке
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
+        List<Future<?>> futures = new ArrayList<>();
         Arrays.stream(island)
                 .flatMap(Arrays::stream)
-                .forEach(cell -> executorService.submit(new CellTask(cell)));
-
-        // TODO нужно как-то подождать выполнение всех потоков..
+                .forEach(cell -> futures.add(executorService.submit(new CellTask(cell))));
+        // нужно как-то подождать выполнение всех потоков..
+        for (Future<?> future : futures) {
+            try {
+                future.get();
+            } catch (Exception ignored) {
+            }
+        }
+        executorService.shutdown();
 
         // Движения животных
         for (int i = 0; i < island.length; i++) {
@@ -48,31 +56,31 @@ public class LocationTask implements Runnable {
                 island[i][j].getAnimals().stream()
                         .filter(Animal::isReadyToMove)
                         .forEach(animal -> {
-                    // вычисляем скорость
-                    int movementSpeed = animal.movementSpeed();
-                    // получаем список клеток куда можем ходить
-                    List<Cell> listMovedAnimal = getListMovedAnimal(island, finalI, finalJ, movementSpeed);
-                    // рандомно перемешиваем список
-                    Collections.shuffle(listMovedAnimal);
-                    // смотрим по клеткам
-                    for (Cell cell : listMovedAnimal) {
-                        // Сколько животных в клетке
-                        long countAnimals = cell.getAnimals().stream()
-                                .filter(animal1 -> animal1.getAnimal() == animal.getAnimal())
-                                .count();
+                            // вычисляем скорость
+                            int movementSpeed = animal.movementSpeed();
+                            // получаем список клеток куда можем ходить
+                            List<Cell> listMovedAnimal = getListMovedAnimal(island, finalI, finalJ, movementSpeed);
+                            // рандомно перемешиваем список
+                            Collections.shuffle(listMovedAnimal);
+                            // смотрим по клеткам
+                            for (Cell cell : listMovedAnimal) {
+                                // Сколько животных в клетке
+                                long countAnimals = cell.getAnimals().stream()
+                                        .filter(animal1 -> animal1.getAnimal() == animal.getAnimal())
+                                        .count();
 
-                        // Если есть место для животного
-                        if (countAnimals < animal.getCharacteristic().getMaximumAmount()) {
-                            // добавляем животное в новую клетку
-                            cell.getAnimals().add(animal);
-                            // помечаем животное для исключения в этом списке
-                            removedList.add(animal);
-                            animal.setReadyToMove(false);
-                            // больше не подбираем место для этого животного, выходим из for
-                            break;
-                        }
-                    }
-                });
+                                // Если есть место для животного
+                                if (countAnimals < animal.getCharacteristic().getMaximumAmount()) {
+                                    // добавляем животное в новую клетку
+                                    cell.getAnimals().add(animal);
+                                    // помечаем животное для исключения в этом списке
+                                    removedList.add(animal);
+                                    animal.setReadyToMove(false);
+                                    // больше не подбираем место для этого животного, выходим из for
+                                    break;
+                                }
+                            }
+                        });
                 // удаляем животных которые ушли
                 island[i][j].getAnimals().removeAll(removedList);
             }
@@ -103,14 +111,15 @@ public class LocationTask implements Runnable {
     private static List<Cell> getListMovedAnimal(Cell[][] island, final int i, final int j, int movementSpeed) {
         List<Cell> result = new ArrayList<>();
         int leftPosition = Math.max(j - movementSpeed, 0);
-        int rightPosition = Math.min(j + movementSpeed, island[i].length);
-        int downPosition = Math.min(i + movementSpeed, island.length);
+        int rightPosition = Math.min(j + movementSpeed, island[j].length - 1);
+        int downPosition = Math.min(i + movementSpeed, island.length - 1);
         int upPosition = Math.max(i - movementSpeed, 0);
 
         for (int i2 = upPosition; i2 <= downPosition; i2++) {
             for (int j2 = leftPosition; j2 <= rightPosition; j2++) {
-                if (!(i2 == i && j2 == j))
+                if (!(i2 == i && j2 == j)) {
                     result.add(island[i2][j2]);
+                }
             }
         }
 
