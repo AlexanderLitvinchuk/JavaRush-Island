@@ -17,9 +17,10 @@ public abstract class Animal {
 
     private boolean isLive = true;
 
-    protected CharacteristicDto getCharacteristic()  {
+    protected CharacteristicDto getCharacteristic() {
         return Characteristic.getCharacteristicDto(getAnimal());
     }
+
     protected Map<AnimalEnum, Integer> getFoodChances() {
         return FoodChances.getAnimalEnumMapMap().get(getAnimal());
     }
@@ -34,6 +35,15 @@ public abstract class Animal {
      */
     public boolean multiply() {
         return isLive && getAmountOfHunger() == 0;
+    }
+
+    /**
+     * Скорость передвижения
+     *
+     * @return - скорость передвижения для конкретного животного
+     */
+    public int movementSpeed() {
+        return getCharacteristic().getMovedSpeed();
     }
 
     /**
