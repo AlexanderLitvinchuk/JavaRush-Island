@@ -30,9 +30,11 @@ public abstract class Animal {
     public abstract void eat(Cell cell);
 
     /**
-     * Размножение
+     * Размножение, если живой и не голодный
      */
-    public abstract void multiply();
+    public boolean multiply() {
+        return isLive && getAmountOfHunger() == 0;
+    }
 
     /**
      * направление движения

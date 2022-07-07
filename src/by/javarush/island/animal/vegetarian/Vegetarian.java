@@ -73,10 +73,6 @@ public abstract class Vegetarian extends Animal {
         }
     }
 
-    @Override
-    public void multiply() {
-
-    }
 
     @Override
     public DirectionsDrivingEnum chooseDirectionOfTravel() {
