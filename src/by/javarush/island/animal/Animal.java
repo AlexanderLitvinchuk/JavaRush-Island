@@ -3,7 +3,6 @@ package by.javarush.island.animal;
 import by.javarush.island.animal.chances.FoodChances;
 import by.javarush.island.animal.characteristic.Characteristic;
 import by.javarush.island.animal.characteristic.CharacteristicDto;
-import by.javarush.island.animal.directions.DirectionsDrivingEnum;
 import by.javarush.island.cell.Cell;
 
 import java.util.Map;
@@ -50,11 +49,6 @@ public abstract class Animal {
     public int movementSpeed() {
         return getCharacteristic().getMovedSpeed();
     }
-
-    /**
-     * направление движения
-     */
-    public abstract DirectionsDrivingEnum chooseDirectionOfTravel();
 
     public abstract AnimalTypeEnum getAnimalType();
 

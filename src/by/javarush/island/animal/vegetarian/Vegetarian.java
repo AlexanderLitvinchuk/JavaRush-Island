@@ -4,7 +4,6 @@ import by.javarush.island.animal.Animal;
 import by.javarush.island.animal.AnimalEnum;
 import by.javarush.island.animal.AnimalTypeEnum;
 import by.javarush.island.animal.characteristic.Characteristic;
-import by.javarush.island.animal.directions.DirectionsDrivingEnum;
 import by.javarush.island.cell.Cell;
 import by.javarush.island.utils.Utils;
 
@@ -73,9 +72,4 @@ public abstract class Vegetarian extends Animal {
         }
     }
 
-
-    @Override
-    public DirectionsDrivingEnum chooseDirectionOfTravel() {
-        return null;
-    }
 }
