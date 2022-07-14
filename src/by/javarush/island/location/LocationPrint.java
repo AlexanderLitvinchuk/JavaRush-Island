@@ -19,7 +19,6 @@ public class LocationPrint {
             for (int j = 0; j < island[i].length; j++) {
                 System.out.printf("клетка[%d][%d] Старт%n", i, j);
                 printCell(island[i][j]);
-                System.out.println("test");
                 System.out.printf("клетка[%d][%d] Финиш%n", i, j);
             }
 
@@ -47,6 +46,12 @@ public class LocationPrint {
                     .count();
             System.out.println(key.getDescription() + "всего поело - " + count + ", голодных - " + (size - count) );
         }
+
+        System.out.println("Животных пришло - " + cell.getTotalAnimalsCame());
+        System.out.println("Животных ушло - " + cell.getTotalAnimalsGone());
+        System.out.println("Животных погибло голодными - " + cell.getDeadAnimals());
+        System.out.println("Животных съедено - " + cell.getEatenAnimals());
+        cell.resetCounters();
     }
 
 }

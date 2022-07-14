@@ -73,6 +73,8 @@ public class LocationTask implements Runnable {
                                 if (countAnimals < animal.getCharacteristic().getMaximumAmount()) {
                                     // добавляем животное в новую клетку
                                     cell.getAnimals().add(animal);
+                                    // увеличиваем счетчик на 1 когда животное пришло
+                                    cell.addOneToTotalAnimalsCame();
                                     // помечаем животное для исключения в этом списке
                                     removedList.add(animal);
                                     animal.setReadyToMove(false);
@@ -83,6 +85,9 @@ public class LocationTask implements Runnable {
                         });
                 // удаляем животных которые ушли
                 island[i][j].getAnimals().removeAll(removedList);
+                // Помечаем сколько животных ушло
+                island[i][j].addToTotalAnimalsGone(removedList.size());
+
             }
         }
 
@@ -94,7 +99,6 @@ public class LocationTask implements Runnable {
         }
 
         LocationPrint.print(location.getIsland());
-        System.out.println("Финиш ШАГ = ");
 
     }
 

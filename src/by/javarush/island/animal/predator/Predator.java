@@ -41,6 +41,8 @@ public abstract class Predator extends Animal {
                 energy = energy - weight;
                 // Помечаем что животное скушано
                 animal.killAnimal();
+                // +1 животное скушали в клетке, для статистики
+                cell.addOneToEatenAnimals();
             }
 
             // Когда съели достаточно - выходим из цикла
