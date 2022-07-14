@@ -20,7 +20,7 @@ public class LocationPrint {
                 System.out.printf("клетка[%d][%d] Старт%n", i, j);
                 printCell(island[i][j]);
                 System.out.println("test");
-                System.out.printf("клетка[%d][%d] Финишь%n", i, j);
+                System.out.printf("клетка[%d][%d] Финиш%n", i, j);
             }
 
         }
@@ -45,7 +45,7 @@ public class LocationPrint {
             long count = animalEnumListEntry.getValue().stream()
                     .filter(animal -> animal.getAmountOfHunger() == 0)
                     .count();
-            System.out.println("Из " + key.getDescription() + " поело - " + count + ", голодных - " + (size - count) );
+            System.out.println(key.getDescription() + "всего поело - " + count + ", голодных - " + (size - count) );
         }
     }
 
